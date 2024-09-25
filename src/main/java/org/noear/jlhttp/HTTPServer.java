@@ -2813,13 +2813,13 @@ public class HTTPServer {
                 throw new IOException("invalid header: \"" + line + "\"");
             String name = line.substring(0, separator);
             String value = line.substring(separator + 1).trim(); // ignore LWS
-            Header replaced = headers.replace(name, value);
+            headers.add(name, value); //todo: noear 20240925 (replace -> add)
             // concatenate repeated headers (distinguishing repeated from folded)
-            if (replaced != null && start == 0) {
-                value = replaced.getValue() + ", " + value;
-                line = name + ": " + value;
-                headers.replace(name, value);
-            }
+//            if (replaced != null && start == 0) {
+//                value = replaced.getValue() + ", " + value;
+//                line = name + ": " + value;
+//                headers.replace(name, value);
+//            }
             prevLine = line;
             if (++count > 100)
                 throw new IOException("too many header lines");
