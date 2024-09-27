@@ -13,10 +13,13 @@
 * 1491行修改：
 添加_paramsList，实现参数寄存功能（流只能读一次，后面就没了）
 
-* 2807行修改：
-将编译改为：UTF-8；解决中文参数乱码问题
-
 * 1748行修改：（优先使用传进来的contentType，解决内部404之类的调用无法显示为html的问题 ）
+
+* 2807行修改：
+  将编译改为：UTF-8；解决中文参数乱码问题
+
+* 2816行修改：
+  Headers 构建用 add 替代 rep（支持多值）
 
 ```java
 public void sendHeaders(int status, long length, long lastModified, String etag, String contentType, long[] range) throws IOException {
